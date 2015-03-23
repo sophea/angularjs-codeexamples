@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+<body>
+
+  <div ng-controller="ListController">
+    <a href="" ng-repeat="user in users" ng-click="selectUser(user)">
+      <p>{{ user.first_name }} {{ user.last_name }}</p>
+    </a>
+  </div>
+
+  <div ng-controller="DetailController">
+    <p ng-if="!currentUser">You have not selected a user</p>
+    <div ng-if="currentUser">
+      <img ng-src="{{ currentUser.picture }}" height="100" />
+      <p>{{ currentUser.first_name }} {{ currentUser.last_name }}</p>
+      <p>{{ currentUser.email }}</p>
+      <p>{{ currentUser.company }}</p>
+    </div>
+  </div>
+
+  <script src="../lib/angular/angular.min.js"></script>
+  <script>
+    angular.module('MyApp', [])
+      .factory('UserService', function () {
+        var user
+
+        return {
+          setCurrentUser: function (current) {
+            user = current
+          },
+          getCurrentUser: function () {
+            return user
+          }
+        }
+      })
+
+      .controller('ListController', function ($scope, $http, $rootScope, UserService) {
+        $http.get('./users.json')
+          .success(function (data) {
+            $scope.users = data
+          })
+        $scope.selectUser = function (user) {
+          UserService.setCurrentUser(user)
+          $rootScope.$broadcast('userChanged')
+        }
+      })
+
+      .controller('DetailController', function ($scope, $rootScope, UserService) {
+        $scope.$on('userChanged', function (event) {
+          $scope.currentUser = UserService.getCurrentUser()
+        })
+      })
+  </script>
+</body>
+</html>
+

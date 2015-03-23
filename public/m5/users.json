@@ -5,7 +5,7 @@
     "id": 1,
     "company": "Mauris Sagittis Placerat Inc.",
     "email": "sit@sollicitudinorci.ca",
-    "picture" : "./users/3.jpg"
+    "picture" : "./users/1.jpg"
   },
   {
     "first_name": "Ariana",
@@ -13,7 +13,7 @@
     "id": 2,
     "company": "Est Nunc Institute",
     "email": "urna.Nullam.lobortis@pharetraQuisque.co.uk",
-    "picture" : "./users/6.jpg"
+    "picture" : "./users/2.jpg"
   },
   {
     "first_name": "Gwendolyn",
