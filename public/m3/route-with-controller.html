@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+<body>
+
+  <div ng-view></div>
+
+  <script src="../lib/angular/angular.min.js"></script>
+  <script src="../lib/angular-route/angular-route.min.js"></script>
+  <script>
+    angular.module('MyApp', ['ngRoute'])
+      .config(function ($routeProvider) {
+        $routeProvider
+          .when('/', {
+            controller: 'HomeController',
+            templateUrl: 'home.html'
+          })
+          .when('/about', {
+            controller: 'AboutController',
+            templateUrl: 'about.html'
+          })
+      })
+      .controller('HomeController', function ($scope) {
+        $scope.title = "Welcome to the Home Page!"
+        $scope.description = function () {
+          return "This is the home page."
+        }
+      })
+      .controller('AboutController', function ($scope) {
+        $scope.title = 'About Page'
+      })
+  </script>
+</body>
+</html>
+

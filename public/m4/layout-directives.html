@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+<body>
+
+  <section>
+    <h1>ngIf</h1>
+    <button ng-click="showMe = true">showMe = true</button>
+    <button ng-click="showMe = false">showMe = false</button>
+    <button ng-click="showMe = !showMe">[toggle]</button>
+    <p ng-if="showMe">I am visible when ng-if is true</p>
+  </section>
+
+  <hr />
+
+  <section>
+    <h1>ngShow/ngHide</h1>
+    <button ng-click="show = true">show = true</button>
+    <button ng-click="show = false">show = false</button>
+    <p ng-show="show">I am visible when show is true</p>
+
+    <button ng-click="hide = true">hide = true</button>
+    <button ng-click="hide = false">hide = false</button>
+    <p ng-hide="hide">I am visible when hide is false</p>
+  </section>
+
+  <hr />
+
+  <section ng-controller="RepeatController">
+    <h1>ngRepeat</h1>
+
+    <button ng-click="setColors()">Colors</button>
+    <button ng-click="setStates()">States</button>
+    <button ng-click="values = null">Nothing</button>
+
+    <p ng-hide="getValues()">There is no values</p>
+
+    <div ng-repeat="value in getValues()">
+      {{ $index + 1 }}. {{ value }}
+    </div>
+  </section>
+
+  <hr />
+
+  <section>
+    <h1>ngSwitch</h1>
+
+    <button ng-click="slide = 'one'">One</button>
+    <button ng-click="slide = 'two'">Two</button>
+    <button ng-click="slide = 'three'">Three</button>
+    <button ng-click="slide = 'other'">Other</button>
+
+    <div ng-switch="slide">
+      <p ng-switch-when="one" style="background: red">Slide 1</p>
+      <p ng-switch-when="two" style="background: blue">Slide 2</p>
+      <p ng-switch-when="three" style="background: green">Slide 3</p>
+      <p ng-switch-default style="background: grey">Slide other</p>
+    </div>
+  </section>
+
+  <hr />
+
+  <section>
+    <h1>ngInclude</h1>
+
+    <button ng-click="tpl = 'about.html'">Load "about.html"</button>
+    <button ng-click="tpl = 'contact.html'">Load "contact.html"</button>
+    <button ng-click="tpl = null">Load null</button>
+
+    <div ng-include="tpl"></div>
+
+    <script type="text/ng-template" id="about.html">
+      <div style="width: 500px; height: 200px; background: green;">
+        <h2>About Page</h2>
+      </div>
+    </script>
+  </section>
+
+  <hr />
+
+  <script src="../lib/angular/angular.min.js"></script>
+  <script>
+    angular.module('MyApp', [])
+      .controller('RepeatController', function ($scope) {
+        $scope.setColors = function () {
+          $scope.values = ['Black', 'White', 'Red', 'Pink', 'Yellow']
+        }
+        $scope.setStates = function () {
+          $scope.values = ['MA', 'NY', 'AR', 'NV', 'CA']
+        }
+        $scope.getValues = function () {
+          return $scope.values
+        }
+      })
+  </script>
+</body>
+</html>
+

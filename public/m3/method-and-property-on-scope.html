@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+<body ng-controller="HomeController">
+
+  <h1>{{ title }}</h1>
+  <p>{{ description() }}</p>
+
+  <script src="../lib/angular/angular.min.js"></script>
+  <script>
+    angular.module('MyApp', [])
+      .controller('HomeController', function ($scope) {
+        $scope.title = "Welcome to the Home Page!"
+        $scope.description = function () {
+          return "This is the home page."
+        }
+      })
+  </script>
+</body>
+</html>
+

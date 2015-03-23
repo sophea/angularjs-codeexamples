@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html ng-app>
+<body ng-init="title = 'Angular'; items = [1, 2, 3, 4, 5]">
+  <h1>Hello {{ title }}</h1>
+
+  <input type="search" ng-model="q" />
+  <div ng-repeat="item in items | filter: q" ng-hide="showMe">
+    {{ item }}
+  </div>
+
+  <button ng-click="items.push(items.length + 1)">Add item</button>
+  <button ng-click="showMe = !showMe">Toggle Show/Hide</button>
+
+  <script src="../lib/angular/angular.min.js"></script>
+</body>
+</html>
+
