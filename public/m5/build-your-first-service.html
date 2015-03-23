@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+<body>
+
+  <script src="../lib/angular/angular.min.js"></script>
+  <script>
+    angular.module('MyApp', [])
+      .factory('UserService', function () {
+        var user
+
+        return {
+          setCurrentUser: function (current) {
+            user = current
+          },
+          getCurrentUser: function () {
+            return user
+          }
+        }
+      })
+
+      .controller('DetailController', function (UserService) {
+        UserService.setCurrentUser('user') // Set the user
+      })
+
+      .controller('InfoController', function ($scope, UserService) {
+        $scope.user = UserService.getCurrentUser() // Get the user
+      })
+  </script>
+</body>
+</html>
+

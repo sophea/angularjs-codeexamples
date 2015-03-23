@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+<body ng-controller="ListController">
+
+  <div ng-repeat="user in users">
+    {{ user.first_name }} {{ user.last_name }}
+  </div>
+
+  <script src="../lib/angular/angular.min.js"></script>
+  <script>
+    angular.module('MyApp', [])
+      .controller('ListController', function ($scope, $http) {
+        $http.get('./users.json')
+          .success(function (data) {
+            $scope.users = data
+          })
+      })
+  </script>
+</body>
+</html>
+

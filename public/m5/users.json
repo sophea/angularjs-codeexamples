@@ -1,0 +1,26 @@
+[
+  {
+    "first_name": "Amal",
+    "last_name": "Berg",
+    "id": 1,
+    "company": "Mauris Sagittis Placerat Inc.",
+    "email": "sit@sollicitudinorci.ca",
+    "picture" : "./users/3.jpg"
+  },
+  {
+    "first_name": "Ariana",
+    "last_name": "Ryan",
+    "id": 2,
+    "company": "Est Nunc Institute",
+    "email": "urna.Nullam.lobortis@pharetraQuisque.co.uk",
+    "picture" : "./users/6.jpg"
+  },
+  {
+    "first_name": "Gwendolyn",
+    "last_name": "Stanton",
+    "id": 3,
+    "company": "Vitae Mauris Institute",
+    "email": "sociis.natoque.penatibus@Fuscealiquet.edu",
+    "picture" : "./users/3.jpg"
+  }
+]

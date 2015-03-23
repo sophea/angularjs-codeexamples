@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+<body>
+  <section>
+    <h1>ngModel, ngFocus, ngBlur</h1>
+
+    <button ng-click="title = 'John'">Set value as "John"</button>
+    <button ng-click="title = null">Set value as null</button>
+    <input type="text" ng-model="title" ng-focus="focus = true" ng-blur="focus = false" />
+    <p>The title is <strong>{{ title.length ? title : "no name" }}</strong></p>
+  </section>
+
+  <hr />
+
+  <section ng-controller="FormController">
+    <h1>ngSubmit</h1>
+
+    <form name="myForm" ng-submit="submit()" novalidate>
+      <label>Name</label>
+      <input type="text" ng-model="name" required />
+      <label>Age</label>
+      <select ng-model="age" ng-options="age for age in generateAge()"></select>
+      <input type="submit" />
+    </form>
+  </section>
+
+  <script src="../lib/angular/angular.min.js"></script>
+  <script>
+    angular.module('MyApp', [])
+      .controller('FormController', function ($scope) {
+        $scope.generateAge = function () {
+          var ages = []
+          for (var i = 18; i <= 60; i++) {
+            ages.push(i)
+          }
+          return ages
+        }
+        $scope.submit = function () {
+          if ($scope.myForm.$valid)
+            alert('submited')
+          else
+            alert('invalid')
+        }
+      })
+  </script>
+</body>
+</html>
+
