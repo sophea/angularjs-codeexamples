@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+<body ng-controller="LanguageController">
+
+  <h1 translate="title"></h1>
+  <button ng-click="setLanguage('en')">English</button>
+  <button ng-click="setLanguage('kh')">ខ្មែរ</button>
+
+  <script src="../lib/angular/angular.min.js"></script>
+  <script src="../lib/angular-translate/angular-translate.min.js"></script>
+  <script>
+    angular.module('MyApp', ['pascalprecht.translate'])
+      .config(function ($translateProvider) {
+        $translateProvider
+          .translations('en', {
+            title: 'Hello'
+          })
+          .translations('kh', {
+            title: 'សួស្តី'
+          })
+          .preferredLanguage('kh')
+      })
+
+      .controller('LanguageController', function ($scope, $translate) {
+        $scope.setLanguage = function (key) {
+          $translate.use(key)
+        }
+      })
+  </script>
+</body>
+</html>
+
