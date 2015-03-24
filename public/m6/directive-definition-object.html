@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+<body>
+
+  <my-circle></my-circle>
+  <div my-rectangle></div>
+
+  <script src="../lib/angular/angular.min.js"></script>
+  <script>
+    angular.module('MyApp', [])
+      .directive('myCircle', function () {
+        return {
+          templateUrl: './circle.html',
+          replace: true
+        }
+      })
+      .directive('myRectangle', function () {
+        return {
+          templateUrl: './rectangle.html',
+          replace: true,
+          restrict: 'A'
+        }
+      })
+  </script>
+</body>
+</html>
+

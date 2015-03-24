@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+<body>
+
+  <my-directive></my-directive>
+  <div my-directive></div>
+  <div class="my-directive"></div>
+  <!-- directive: my-directive -->
+
+  <script src="../lib/angular/angular.min.js"></script>
+  <script>
+    angular.module('MyApp', [])
+      .directive('myDirective', function () {
+        return {
+          restrict: 'EACM',
+          replace: true,
+          template: '<a href="">Click me</a>'
+        }
+      })
+  </script>
+</body>
+</html>
+
