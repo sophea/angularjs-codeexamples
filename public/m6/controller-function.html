@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+<body>
+
+  <my-circle></my-circle>
+  <div my-rectangle></div>
+
+  <script src="../lib/angular/angular.min.js"></script>
+  <script>
+    angular.module('MyApp', [])
+      .directive('myCircle', function () {
+        return {
+          templateUrl: './circle.html',
+          replace: true,
+          controller: function ($scope, $rootScope) {
+            $scope.afterClick = function () {
+              $rootScope.$broadcast('clicked')
+            }
+          },
+          link: function (scope, element) {
+            element.on('click', function () {
+              scope.$apply(function () {
+                scope.afterClick()
+              })
+            })
+          }
+        }
+      })
+
+      .directive('myRectangle', function () {
+        return {
+          templateUrl: './rectangle.html',
+          replace: true,
+          restrict: 'A',
+          controller: function ($scope) {
+            $scope.$on('clicked', function () {
+              alert()
+              $scope.clicked = true
+            })
+          }
+        }
+      })
+  </script>
+</body>
+</html>
+
