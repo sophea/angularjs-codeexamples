@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+<body>
+
+  <h1 translate="title"></h1>
+
+  <script src="../lib/angular/angular.min.js"></script>
+  <script src="../lib/angular-translate/angular-translate.min.js"></script>
+  <script>
+    angular.module('MyApp', ['pascalprecht.translate'])
+      .config(function ($translateProvider) {
+        $translateProvider
+          .translations('en', {
+            title: 'Hello'
+          })
+          .translations('kh', {
+            title: 'សួស្តី'
+          })
+          .preferredLanguage('kh')
+      })
+  </script>
+</body>
+</html>
+
